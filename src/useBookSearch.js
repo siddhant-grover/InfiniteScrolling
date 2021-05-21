@@ -31,9 +31,7 @@ useEffect(()=>{
         console.log(res.data.docs);//100 docs at a time 
        // arr=res.data.docs
        setBooks(prevBooks=>{
-        return [...new Set([...prevBooks,...(res.data.docs).map((doc)=>{
-            return doc.title
-        })])]//converting set to array
+        return [ ...new Set( [...prevBooks,...(res.data.docs).map(doc=> doc.title)] ) ]//converting set to array
        }
     )
        setHasMore(res.data.docs.length > 0)//if no data is returned then set hasMore false
